@@ -1,0 +1,278 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 日本語 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
+#ifdef _WIN32
+LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
+#pragma code_page(932)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 17, 1\r\n"
+    "#pragma code_page(932)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\cocoUpple.rc2""  // Microsoft Visual C++ 以外のツールで編集されたリソース\r\n"
+    "#include ""l.jpn\\afxres.rc""          // 標準のコンポーネント\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\cocoUpple.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 251, 87
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "cocoUppleのバージョン情報"
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,21
+    LTEXT           "cocoUpple Version 1.40",IDC_VERSION,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009 H.Tsujimura (tsupo)",
+                    IDC_STATIC,44,25,200,8
+    LTEXT           "http://watcher.moe-nifty.com/",IDC_UPLOADFILE_WEB_URL,
+                    41,40,90,8,SS_NOTIFY
+    DEFPUSHBUTTON   "OK",IDOK,194,7,50,14,WS_GROUP
+    LTEXT           "OpenSSL: ",IDC_OPENSSL,51,53,140,8
+    LTEXT           "iconv: ",IDC_ICONV,51,63,140,8
+END
+
+IDD_COCOUPPLE_DIALOG DIALOGEX 0, 0, 267, 305
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_ACCEPTFILES | WS_EX_APPWINDOW
+CAPTION "ファイルをアップロード"
+FONT 9, "ＭＳ Ｐゴシック", 0, 0, 0x1
+BEGIN
+    LTEXT           "ユーザ名",IDC_STATIC,7,7,28,8
+    EDITTEXT        IDC_EDIT_USERNAME,7,18,79,12,ES_AUTOHSCROLL
+    LTEXT           "パスワード",IDC_STATIC,95,7,32,8
+    EDITTEXT        IDC_EDIT_PASSWORD,95,18,79,12,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    PUSHBUTTON      "blog 選択",IDC_BUTTON_SELECTBLOG,180,17,45,14
+    LTEXT           "blog名",IDC_STATIC,7,60,20,8
+    EDITTEXT        IDC_EDIT_BLOGNAME,7,71,168,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "blog ID",IDC_STATIC,181,60,22,8
+    EDITTEXT        IDC_EDIT_BLOGID,181,71,79,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "アップロードするファイル",IDC_STATIC,7,89,72,8
+    EDITTEXT        IDC_EDIT_TARGETFILENAME,7,100,168,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "参照",IDC_BUTTON_SELECTFILE,182,99,45,14
+    LTEXT           "アップロード先ディレクトリ",IDC_STATIC,7,119,75,8
+    EDITTEXT        IDC_EDIT_TARGETDIRECTORY,7,130,168,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "アップロード",IDC_BUTTON_UPLOAD,182,128,45,14
+    LTEXT           "アップロードしたファイルを参照する html ソース",
+                    IDC_STATIC,7,148,139,8
+    EDITTEXT        IDC_EDIT_HTML,7,157,168,103,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+    CONTROL         "proxy を使う",IDC_CHECK_USEPROXY,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,183,155,51,10
+    LTEXT           "ファイルアップロードツール                     for ココログ",
+                    IDC_STATIC,179,174,81,17
+    LTEXT           "by H.Tsujimura (tsupo)           Ver 1.34                 Sep 28 2007",
+                    IDC_VERSION_INFO,185,196,68,26
+    DEFPUSHBUTTON   "終了",IDOK,194,230,50,24
+    LTEXT           "削除するファイルの URL",IDC_STATIC,7,274,72,8
+    EDITTEXT        IDC_EDIT_URL_DELETE,7,286,168,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "削除",IDC_BUTTON_DELETE,182,284,45,14
+    CONTROL         "ココログベーシック/プラス/プロ",IDC_RADIO_COCOLOG,
+                    "Button",BS_AUTORADIOBUTTON,15,37,107,10
+    CONTROL         "ココログフリー",IDC_RADIO_COCOLOGFREE,"Button",
+                    BS_AUTORADIOBUTTON,122,37,57,10
+END
+
+IDD_BLOGSELECT_DIALOG DIALOG DISCARDABLE  0, 0, 155, 117
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "blog 選択"
+FONT 9, "ＭＳ Ｐゴシック"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,54,90,50,14
+    LISTBOX         IDC_LIST_BLOG,7,18,141,68,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | LBS_WANTKEYBOARDINPUT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "blog を選択してください",IDC_STATIC,7,7,68,8
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,5,5
+ PRODUCTVERSION 1,0,5,5
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041104b0"
+        BEGIN
+            VALUE "Comments", "ココログにファイルをアップロードするツール\0"
+            VALUE "CompanyName", "観測気球 http://watcher.moe-nifty.com/\0"
+            VALUE "FileDescription", "cocoUpple MFC アプリケーション\0"
+            VALUE "FileVersion", "1, 0, 5, 5\0"
+            VALUE "InternalName", "cocoUpple\0"
+            VALUE "LegalCopyright", "Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009 by tsupo\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "cocoUpple.EXE\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "cocoUpple アプリケーション\0"
+            VALUE "ProductVersion", "1, 0, 5, 5\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x411, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 244
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 80
+    END
+
+    IDD_COCOUPPLE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 260
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 298
+    END
+
+    IDD_BLOGSELECT_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 148
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 110
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_HAND2               CURSOR  DISCARDABLE     "res\\cur00001.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "cocoUpple のバージョン情報(&A)..."
+    IDS_UPLOADFILE_WEB_URL  "http://watcher.moe-nifty.com/memo/2004/12/uploadfile.html"
+    IDS_VERSION             "1.41"
+    IDS_RELEASE_DATE        "31 Mar 2009"
+END
+
+#endif    // 日本語 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
+#ifdef _WIN32
+LANGUAGE 17, 1
+#pragma code_page(932)
+#endif //_WIN32
+#include "res\cocoUpple.rc2"  // Microsoft Visual C++ 以外のツールで編集されたリソース
+#include "l.jpn\afxres.rc"          // 標準のコンポーネント
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
