@@ -1,6 +1,6 @@
 
 'uploadFile' and 'cocoUpple' are file uploaders for 'Cocolog'.
-'uploadFile' is a command-line tool, and 'cocoUple' is a GUI tool.
+'uploadFile' is a command-line tool, and 'cocoUpple' is a GUI tool.
 'Cocolog' is one of blog services based on TypePad.
 
 xmlRPC libraries are necessary for building these applications.
