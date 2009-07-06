@@ -5,6 +5,12 @@
  * History:
  * $Log: /comm/uploadFile/cocoUpple/cocoUpple.h $
  * 
+ * 2     09/07/07 2:00 tsupo
+ * 1.43版
+ * 
+ * 4     09/07/03 11:32 Tsujimura543
+ * デバッグ用のログファイルを出力可能にした
+ * 
  * 1     09/05/14 4:18 tsupo
  * (1) ビルド環境のディレクトリ構造を整理
  * (2) VSSサーバ拠点を変更
@@ -46,10 +52,15 @@ extern  "C" {
 /////////////////////////////////////////////////////////////////////////////
 // CCocoUppleApp:
 
+#define COCOUPPLE_LOG_FILE  "cocoUpple.log" // 調査用ログファイル
+
 class CCocoUppleApp : public CWinApp
 {
 public:
 	CCocoUppleApp();
+
+    bool    m_verbose;      // ログを出力するか否か
+    FILE    *m_verboseFp;   // 調査用ログファイルのファイルポインタ
 
 // オーバーライド
 	//{{AFX_VIRTUAL(CCocoUppleApp)

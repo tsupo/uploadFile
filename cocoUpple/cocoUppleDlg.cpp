@@ -6,6 +6,16 @@
  * History:
  * $Log: /comm/uploadFile/cocoUpple/cocoUppleDlg.cpp $
  * 
+ * 2     09/07/07 2:00 tsupo
+ * 1.43版
+ * 
+ * 26    09/07/03 18:14 Tsujimura543
+ * ユーザ名、パスワード変更時、設定ファイルに保存しないままになる不具合
+ * を修正 (アップロード対象ブログを変更したときだけ保存されていた)
+ * 
+ * 25    09/07/03 11:32 Tsujimura543
+ * デバッグ用のログファイルを出力可能にした
+ * 
  * 1     09/05/14 4:18 tsupo
  * (1) ビルド環境のディレクトリ構造を整理
  * (2) VSSサーバ拠点を変更
@@ -104,7 +114,7 @@
 
 #ifndef	lint
 static char	*rcs_id =
-"$Header: /comm/uploadFile/cocoUpple/cocoUppleDlg.cpp 1     09/05/14 4:18 tsupo $";
+"$Header: /comm/uploadFile/cocoUpple/cocoUppleDlg.cpp 2     09/07/07 2:00 tsupo $";
 #endif
 
 #ifdef _DEBUG
@@ -135,6 +145,7 @@ CCocoUppleDlg::CCocoUppleDlg(CWnd* pParent /*=NULL*/)
     strncpy( baseDir, p, q - p );
     baseDir[q - p] = '\0';
 
+    strcpy( m_path, baseDir );
     sprintf( m_settingFilename, "%s/setting.inf", baseDir );
     m_cocologFree = false;
 
@@ -151,6 +162,22 @@ CCocoUppleDlg::CCocoUppleDlg(CWnd* pParent /*=NULL*/)
 	//}}AFX_DATA_INIT
 
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+}
+
+CCocoUppleDlg::~CCocoUppleDlg()
+{
+    CCocoUppleApp   *bp = (CCocoUppleApp *)AfxGetApp();
+
+    if ( bp->m_verboseFp ) {
+        time_t      t   = time( NULL );
+        struct tm   *tm = localtime( &t );
+        fprintf( bp->m_verboseFp,
+                 "\n*** logging end:   %d/%02d/%02d %02d:%02d:%02d ***\n",
+                 tm->tm_year + 1900, tm->tm_mon + 1, tm->tm_mday,
+                 tm->tm_hour, tm->tm_min, tm->tm_sec );
+        fclose( bp->m_verboseFp );
+        bp->m_verboseFp = NULL;
+    }
 }
 
 void CCocoUppleDlg::DoDataExchange(CDataExchange* pDX)
@@ -674,6 +701,54 @@ BOOL CCocoUppleDlg::OnInitDialog()
 
 	SetIcon(m_hIcon, TRUE);
 	SetIcon(m_hIcon, FALSE);
+
+    CCocoUppleApp   *bp = (CCocoUppleApp *)AfxGetApp();
+#ifdef  _DEBUG
+    bp->m_verbose = true;
+#endif
+    if ( bp->m_verbose ) {
+        char            filename[MAX_PATH];
+#ifdef  USE_STAT_64
+        struct _stati64 s;
+#else
+        struct stat     s;
+#endif  /* USE_STAT_64 */
+
+        sprintf( filename, "%s/" COCOUPPLE_LOG_FILE, m_path );
+#ifdef  USE_STAT_64
+        if ( !_stati64( filename, &s ) ) {
+            if ( s.st_size > (__int64)(1024 * 1024 * 64) ) {
+#else   /* !USE_STAT_64 */
+        if ( !stat( filename, &s ) ) {
+            if ( (unsigned long)s.st_size > 1024 * 1024 * 64 ) {
+#endif  /* !USE_STAT_64 */
+                char        backup[MAX_PATH];
+                time_t      t = time( NULL );
+                struct tm   *tm = localtime( &t );
+
+                sprintf( backup,
+                         "%s/" COCOUPPLE_LOG_FILE ".%04d%02d%02d%02d%02d%02d",
+                         m_path,
+                         tm->tm_year + 1900, tm->tm_mon + 1, tm->tm_mday,
+                         tm->tm_hour, tm->tm_min, tm->tm_sec );
+                rename( filename, backup );
+            }
+        }
+
+        bp->m_verboseFp = fopen( filename, "a" );
+        if ( bp->m_verboseFp ) {
+            time_t      t   = time( NULL );
+            struct tm   *tm = localtime( &t );
+            fprintf( bp->m_verboseFp,
+                   "\n\n*** logging start: %d/%02d/%02d %02d:%02d:%02d ***\n",
+                     tm->tm_year + 1900, tm->tm_mon + 1, tm->tm_mday,
+                     tm->tm_hour, tm->tm_min, tm->tm_sec );
+#ifdef  _DEBUG
+            setDump( TRUE, bp->m_verboseFp );
+#endif
+        }
+        setVerbose( bp->m_verbose, bp->m_verboseFp );
+    }
 		
 	return TRUE;
 }
@@ -885,6 +960,7 @@ void CCocoUppleDlg::OnChangeEditUsername()
     updateSelectBlogButton();
 
     p->GetWindowText( save );
+    m_needToSave = true;
 }
 
 void CCocoUppleDlg::OnChangeEditPassword() 
@@ -896,6 +972,7 @@ void CCocoUppleDlg::OnChangeEditPassword()
     updateSelectBlogButton();
 
     p->GetWindowText( save );
+    m_needToSave = true;
 }
 
 void CCocoUppleDlg::OnKillfocusEditUrlDelete() 

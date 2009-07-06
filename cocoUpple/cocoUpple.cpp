@@ -5,6 +5,12 @@
  * History:
  * $Log: /comm/uploadFile/cocoUpple/cocoUpple.cpp $
  * 
+ * 2     09/07/07 2:00 tsupo
+ * 1.43版
+ * 
+ * 4     09/07/03 11:32 Tsujimura543
+ * デバッグ用のログファイルを出力可能にした
+ * 
  * 1     09/05/14 4:18 tsupo
  * (1) ビルド環境のディレクトリ構造を整理
  * (2) VSSサーバ拠点を変更
@@ -25,7 +31,7 @@
 
 #ifndef	lint
 static char	*rcs_id =
-"$Header: /comm/uploadFile/cocoUpple/cocoUpple.cpp 1     09/05/14 4:18 tsupo $";
+"$Header: /comm/uploadFile/cocoUpple/cocoUpple.cpp 2     09/07/07 2:00 tsupo $";
 #endif
 
 #ifdef _DEBUG
@@ -48,6 +54,8 @@ END_MESSAGE_MAP()
 
 CCocoUppleApp::CCocoUppleApp()
 {
+    m_verbose   = false;
+    m_verboseFp = NULL;
 }
 
 /////////////////////////////////////////////////////////////////////////////

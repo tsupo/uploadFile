@@ -5,6 +5,12 @@
  * History:
  * $Log: /comm/uploadFile/cocoUpple/cocoUppleDlg.h $
  * 
+ * 2     09/07/07 2:00 tsupo
+ * 1.43版
+ * 
+ * 8     09/07/03 11:32 Tsujimura543
+ * デバッグ用のログファイルを出力可能にした
+ * 
  * 1     09/05/14 4:18 tsupo
  * (1) ビルド環境のディレクトリ構造を整理
  * (2) VSSサーバ拠点を変更
@@ -47,6 +53,7 @@ class CCocoUppleDlg : public CDialog
 // 構築
 public:
 	CCocoUppleDlg(CWnd* pParent = NULL);	// 標準のコンストラクタ
+    virtual ~CCocoUppleDlg();
 
 // ダイアログ データ
 	//{{AFX_DATA(CCocoUppleDlg)
@@ -90,6 +97,7 @@ private:
     int     m_numOfBlogs;
     bool    m_needToSave;
     bool    m_cocologFree;
+    char    m_path[MAX_PATH];   // cocoUpple.exe の存在するディレクトリ名
 
 protected:
 	HICON m_hIcon;

@@ -155,8 +155,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,5,6
- PRODUCTVERSION 1,0,5,6
+ FILEVERSION 1,0,5,7
+ PRODUCTVERSION 1,0,5,7
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -174,14 +174,14 @@ BEGIN
             VALUE "Comments", "ココログにファイルをアップロードするツール\0"
             VALUE "CompanyName", "観測気球 http://watcher.moe-nifty.com/\0"
             VALUE "FileDescription", "cocoUpple MFC アプリケーション\0"
-            VALUE "FileVersion", "1, 0, 5, 6\0"
+            VALUE "FileVersion", "1, 0, 5, 7\0"
             VALUE "InternalName", "cocoUpple\0"
             VALUE "LegalCopyright", "Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009 by tsupo\0"
             VALUE "LegalTrademarks", "\0"
             VALUE "OriginalFilename", "cocoUpple.EXE\0"
             VALUE "PrivateBuild", "\0"
             VALUE "ProductName", "cocoUpple アプリケーション\0"
-            VALUE "ProductVersion", "1, 0, 5, 6\0"
+            VALUE "ProductVersion", "1, 0, 5, 7\0"
             VALUE "SpecialBuild", "\0"
         END
     END
@@ -245,8 +245,8 @@ STRINGTABLE DISCARDABLE
 BEGIN
     IDS_ABOUTBOX            "cocoUpple のバージョン情報(&A)..."
     IDS_UPLOADFILE_WEB_URL  "http://watcher.moe-nifty.com/memo/2004/12/uploadfile.html"
-    IDS_VERSION             "1.42"
-    IDS_RELEASE_DATE        "22 May 2009"
+    IDS_VERSION             "1.43"
+    IDS_RELEASE_DATE        "3 Jul 2009"
 END
 
 #endif    // 日本語 resources
